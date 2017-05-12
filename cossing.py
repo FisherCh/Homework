@@ -53,6 +53,18 @@ def week2_oddMagic(n):
         posY = mod(posY+1,n)
     return A
 
+def week3_Yanghui(i,j):
+    # 返回i行j列的杨辉三角--递归
+    if j>i+1:
+        print('invalid query')
+        return -1
+    if i<2 or j==0 or j==i:
+        return 1
+    else:
+        return week3_Yanghui(i-1,j-1) + week3_Yanghui(i-1,j)
+
+
 if __name__ == '__main__':
     # week1_romantic()
-    week2_magic(8)
+    # week2_magic(8)
+    print( week3_Yanghui(3,2) )
