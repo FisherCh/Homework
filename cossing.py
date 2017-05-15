@@ -63,14 +63,23 @@ def week3_Yanghui(i,j):
     else:
         return week3_Yanghui(i-1,j-1) + week3_Yanghui(i-1,j)
 
+def week3_generateYH_help(lastLayer,i,j):
+    # 杨辉三角：根据上一层计算下一层
+    if j==0 or j==i:
+        return 1
+    else:
+        return lastLayer[j-1] + lastLayer[j]
+
 def week3_generateYH(m):
-    # 返回m层的杨辉三角，感觉递归的计算量有大，改天改改
-    for x in range(m):
-        Layer = [week3_Yanghui(x,i) for i in range(x+1)]
+    # 返回m层的杨辉三角
+    Layer = [1]
+    for x in range(1,m):
         print(Layer)
+        Layer = [week3_generateYH_help(Layer,x,i) for i in range(x+1)]
+    print(Layer)
 
 if __name__ == '__main__':
     # week1_romantic()
     # week2_magic(8)
     print( week3_Yanghui(3,2) )
-    print( week3_generateYH(4) )
+    print( week3_generateYH(6) )
